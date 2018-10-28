@@ -11,8 +11,8 @@ This is a quick microservices based configuration for a simple demo app
 
 # File structure!
 
-- Everything for the frontend is in the `/triviatime/client` folder
-- Everything for the backend is in the `/triviatime/client/server` folder
+- Everything for the frontend is in the root `/triviatime` folder
+- Everything for the backend is in the `/triviatime/server` folder
 
 Also:
 
