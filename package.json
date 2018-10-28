@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "triviatime",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,11 +17,11 @@
     "styled-components": "^4.0.2"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "app-start": "nodemon server/index.js & npm start"
+    "setup": "npm install && cd server && npm install",
+    "start": "nodemon server/index.js & react-scripts start"
   },
   "proxy": "http://localhost:5000",
   "eslintConfig": {
