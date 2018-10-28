@@ -16,9 +16,10 @@ const styles = theme => ({
     alignItems: 'center'
   },
   card: {
-    marginTop: '200px',
+    marginTop: '15%',
     display: 'flex',
     padding: '50px 30px',
+    width: '400px',
     textAlign: 'center',
     alignItems: 'center',
     flexDirection: 'column'

@@ -12,23 +12,24 @@ const styles = {
     alignItems: 'center',
     flexDirection: 'column',
     padding: '50px',
-    width: '50%'
+    width: '400px',
+    height: '350px'
   },
   container: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    paddingTop: '200px',
+    marginTop: '30%',
     textAlign: 'center'
   },
   question: {
-    marginBottom: '25px',
+    marginBottom: '40px',
     fontWeight: '500'
   },
   button: {
     marginBottom: '15px',
-    padding: '15px 30px'
+    padding: '15px 40px'
   }
 };
 
