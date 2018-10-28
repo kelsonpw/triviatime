@@ -24,15 +24,12 @@ The directions must be followed in order to get up and running.
 
 ### After cloning or forking this app:
 
-run these commands
+run these commands to install dependencies for the client and server
 
 ```sh
-$ cd client/
-$ npm install
-$ cd client/server
-$ npm install
-$ cd ..
-$ npm run app-start
+$ cd triviatime
+$ npm run setup
+$ npm start
 ```
 
 | BROWSER ROUTES                 |
@@ -48,11 +45,11 @@ $ npm run app-start
 
 These are the endpoints that the react app is making requests for gathering and sending the data and storing the User and their responses in mongo
 
-| PURPOSE              | LOCATION                              |  
-| -------------------- | ------------------------------------- |
-| POST /users/account - Signup user | http://localhost:5000/users/account   |
-| GET /users/:username - Get user | http://localhost:5000/users/:username |
-| POST /questions - Save question to DB       | http://localhost:5000/questions       |
+| PURPOSE                               | LOCATION                              |
+| ------------------------------------- | ------------------------------------- |
+| POST /users/account - Signup user     | http://localhost:5000/users/account   |
+| GET /users/:username - Get user       | http://localhost:5000/users/:username |
+| POST /questions - Save question to DB | http://localhost:5000/questions       |
 
 ### Development / Would-like-to-dos
 
