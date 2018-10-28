@@ -33,31 +33,19 @@ const styles = {
 };
 
 class QuestionCards extends Component {
-  shuffle = choices => {
-    for (let i = choices.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [choices[i], choices[j]] = [choices[j], choices[i]];
-    }
-    return choices;
-  };
-
   render() {
     const {
       classes,
-      newQuestion: { question, correct_answer, incorrect_answers }
+      newQuestion: { question, choices }
     } = this.props;
-    const possibleChoices = this.shuffle([
-      ...incorrect_answers,
-      correct_answer
-    ]);
 
     return (
       <Grid className={classes.container}>
         <Card className={classes.card}>
           <Typography className={classes.question} variant="h5">
-            {atob(question)}
+            {question}
           </Typography>
-          {possibleChoices.map((choice, index) => (
+          {choices.map((choice, index) => (
             <Button
               type="submit"
               variant="contained"
@@ -66,7 +54,7 @@ class QuestionCards extends Component {
               onClick={evt => this.props.handleAnswer(evt, choice)}
               key={index}
             >
-              {atob(choice)}
+              {choice}
             </Button>
           ))}
         </Card>

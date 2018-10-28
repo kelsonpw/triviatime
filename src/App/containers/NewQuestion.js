@@ -5,7 +5,7 @@ import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Snackbar from '@material-ui/core/Snackbar';
-
+import { shuffle } from '../Helpers';
 const styles = {
   loadingCard: {
     marginTop: '25%',
@@ -47,11 +47,25 @@ class NewQuestion extends Component {
     this.setState({ loading: true, error: false });
     try {
       const apiRes = await axios.get(
-        'https://opentdb.com/api.php?amount=1&encode=base64'
+        'https://opentdb.com/api.php?amount=1&encode=url3986'
       );
+
       const question = apiRes.data.results[0];
+      const decodedQuestion = {};
+      for (let key in question) {
+        if (Array.isArray(question[key])) {
+          decodedQuestion[key] = question[key].map(val =>
+            decodeURIComponent(val)
+          );
+        } else {
+          decodedQuestion[key] = decodeURIComponent(question[key]);
+        }
+      }
+      const { correct_answer, incorrect_answers } = decodedQuestion;
+      let possibleChoices = [...incorrect_answers, correct_answer];
+      decodedQuestion.choices = shuffle(possibleChoices);
       this.setState({
-        question,
+        question: decodedQuestion,
         loading: false,
         error: false
       });

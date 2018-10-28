@@ -21,11 +21,9 @@ class AnswerCards extends Component {
     return responses.map((res, index) => (
       <Card className={classes.card} flex justify="center" key={index}>
         <Typography gutterBottom variant="h5" component="h2">
-          {atob(res.responseQuestion)}
+          {res.responseQuestion}
         </Typography>
-        <Typography component="p">
-          Your answer: {atob(res.responseAnswer)}
-        </Typography>
+        <Typography component="p">Your answer: {res.responseAnswer}</Typography>
         <Typography component="p">
           Result: {res.responseCorrect ? 'Correct' : 'Incorrect'}{' '}
         </Typography>
