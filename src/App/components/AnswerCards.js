@@ -10,7 +10,14 @@ const styles = {
     margin: '30px',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '700px'
+  },
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     justifyContent: 'center'
   }
 };
@@ -19,7 +26,7 @@ class AnswerCards extends Component {
   renderResponses() {
     const { responses, classes } = this.props;
     return responses.map((res, index) => (
-      <Card className={classes.card} flex justify="center" key={index}>
+      <Card className={classes.card} key={index}>
         <Typography gutterBottom variant="h5" component="h2">
           {res.responseQuestion}
         </Typography>
@@ -32,7 +39,11 @@ class AnswerCards extends Component {
   }
 
   render() {
-    return <div className="container">{this.renderResponses()}</div>;
+    return (
+      <div className={this.props.classes.container}>
+        {this.renderResponses()}
+      </div>
+    );
   }
 }
 

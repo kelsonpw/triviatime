@@ -13,7 +13,7 @@ const styles = {
     flexDirection: 'column',
     padding: '50px',
     width: '400px',
-    height: '350px'
+    minHeight: '300px'
   },
   container: {
     display: 'flex',
@@ -28,7 +28,7 @@ const styles = {
     fontWeight: '500'
   },
   button: {
-    marginBottom: '15px',
+    margin: '5px',
     padding: '15px 40px'
   }
 };

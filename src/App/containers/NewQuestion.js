@@ -5,7 +5,9 @@ import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Snackbar from '@material-ui/core/Snackbar';
+import Typegraphy from '@material-ui/core/Typography';
 import { shuffle } from '../Helpers';
+import Typography from '@material-ui/core/Typography';
 const styles = {
   loadingCard: {
     marginTop: '25%',
@@ -110,10 +112,18 @@ class NewQuestion extends Component {
           </div>
         );
       } else {
-        return <Card className={classes.loadingCard}>Loading</Card>;
+        return (
+          <Card className={classes.loadingCard}>
+            <Typography component="p">Loading...</Typography>
+          </Card>
+        );
       }
     } else {
-      return <Card className={classes.loadingCard}>Please login first.</Card>;
+      return (
+        <Card className={classes.loadingCard}>
+          <Typography component="p">Please login first</Typography>
+        </Card>
+      );
     }
   }
   render() {
