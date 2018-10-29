@@ -11,6 +11,7 @@ const defaultState = {
   user: null,
   error: null
 };
+
 export default function(state = defaultState, action) {
   switch (action.type) {
     case LOADING_USER:

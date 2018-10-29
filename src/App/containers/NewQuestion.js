@@ -5,7 +5,6 @@ import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Snackbar from '@material-ui/core/Snackbar';
-import Typegraphy from '@material-ui/core/Typography';
 import { shuffle } from '../Helpers';
 import Typography from '@material-ui/core/Typography';
 const styles = {
@@ -41,8 +40,8 @@ class NewQuestion extends Component {
     };
   }
 
-  componentDidMount() {
-    this.getQuestion();
+  async componentDidMount() {
+    await this.getQuestion();
   }
 
   async getQuestion() {

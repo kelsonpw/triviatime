@@ -28,11 +28,10 @@ const styles = {
 };
 
 class AnswerHistory extends Component {
-
-  componentDidMount() {
+  async componentDidMount() {
     if (this.props.user) this.props.getUserAction(this.props.user.username);
   }
-  
+
   render() {
     const { classes } = this.props;
     return (
