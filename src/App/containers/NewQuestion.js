@@ -19,17 +19,11 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    textAlign: 'center',
     flexDirection: 'column'
   },
   snackbarAlert: {
     marginTop: '80px',
-    textAlign: 'center',
-    minWidth: '100px',
-    maxWidth: '330px'
-  },
-  snackBarContainer: {
-    marginLeft: '60px'
+    display: 'block'
   }
 };
 
@@ -141,14 +135,16 @@ class NewQuestion extends Component {
         <Snackbar
           open={this.state.openAlert}
           className={classes.snackbarAlert}
-          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
           message={
-            <div className={classes.snackBarContainer}>
+            <div className={classes.snackBarText}>
               <Typography component="p" color="inherit">
                 Your answer was{' '}
-                {this.state.isValid ? 'correct. Nice!' : 'incorrect.'}
-                <br />
-                Your score is {this.state.correctCount}
+                {this.state.isValid ? 'correct. Nicely done!' : 'incorrect.'}
+                <span className={classes.score}>
+                  {' '}
+                  Current score: {this.state.correctCount}
+                </span>
               </Typography>
             </div>
           }
