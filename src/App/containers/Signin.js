@@ -78,7 +78,7 @@ class Signin extends Component {
               TriviaTime
             </Typography>
             <Typography gutterBottom variant="h5" component="h2">
-              Want to answer cool trivia questions?
+              Try your hand at some difficult trivia!
             </Typography>
             <Typography component="p">
               Choose a username you will remember.
