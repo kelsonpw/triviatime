@@ -50,7 +50,7 @@ class QuestionCards extends Component {
             <Button
               type="submit"
               variant="contained"
-              color="primary"
+              color="secondary"
               className={classes.button}
               onClick={evt => this.props.handleAnswer(evt, choice)}
               key={index}

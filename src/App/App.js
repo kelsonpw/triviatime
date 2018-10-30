@@ -14,9 +14,9 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   app: {
-    backgroundColor: '#3F51B5',
     height: '100vh',
-    overflow: 'auto'
+    overflow: 'auto',
+    background: 'linear-gradient(to right bottom, #430089, #82ffa1)'
   }
 });
 

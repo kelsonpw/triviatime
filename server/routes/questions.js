@@ -4,19 +4,22 @@ const { User } = require('../models');
 
 router.post('/', async (req, res, next) => {
   try {
-    const { original, userResponse } = req.body;
+    const {
+      original,
+      userResponse: { username, answer }
+    } = req.body;
     const { question, correct_answer } = original;
-    const isValid = userResponse.answer === correct_answer;
+    const isValid = answer === correct_answer;
     let increaseCorrect = 0;
     if (isValid) increaseCorrect = 1;
     const newResponse = {
       responseQuestion: question,
-      responseAnswer: userResponse.answer,
+      responseAnswer: answer,
       correctAnswer: correct_answer,
       responseCorrect: isValid
     };
     const user = await User.findOneAndUpdate(
-      { username: userResponse.username },
+      { username },
       {
         $push: { responses: newResponse },
         $inc: { correctAnswers: increaseCorrect }

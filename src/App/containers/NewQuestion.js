@@ -7,7 +7,6 @@ import Card from '@material-ui/core/Card';
 import Snackbar from '@material-ui/core/Snackbar';
 import { shuffle } from '../Helpers';
 import Typography from '@material-ui/core/Typography';
-import theme from '../theme';
 const styles = {
   loadingCard: {
     marginTop: '25%',
@@ -30,7 +29,7 @@ const styles = {
     maxWidth: '330px'
   },
   snackBarContainer: {
-    marginLeft: '50px'
+    marginLeft: '60px'
   }
 };
 
@@ -102,13 +101,13 @@ class NewQuestion extends Component {
         isValid,
         correctCount
       });
-      setTimeout(() => this.setState({ openAlert: false }), 3000);
+      setTimeout(() => this.setState({ openAlert: false }), 4000);
     } catch (err) {
       this.setState({ loading: false, error: true });
     }
   };
 
-  isLoaded(classes) {
+  isQuestionLoadedAndAuthed(classes) {
     if (this.props.user) {
       if (this.state.question) {
         return (
@@ -138,7 +137,7 @@ class NewQuestion extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.container}>
-        {this.isLoaded(classes)}
+        {this.isQuestionLoadedAndAuthed(classes)}
         <Snackbar
           open={this.state.openAlert}
           className={classes.snackbarAlert}
