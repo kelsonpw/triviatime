@@ -96,11 +96,13 @@ class NewQuestion extends Component {
         userResponse
       });
       const { isValid, correctCount } = result.data;
-      this.setState({ openAlert: true, isValid, correctCount });
       this.getQuestion();
-      setTimeout(() => {
-        this.setState({ openAlert: false });
-      }, 5000);
+      this.setState({
+        openAlert: true,
+        isValid,
+        correctCount
+      });
+      setTimeout(() => this.setState({ openAlert: false }), 3000);
     } catch (err) {
       this.setState({ loading: false, error: true });
     }
