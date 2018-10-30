@@ -23,7 +23,7 @@ router.post('/', async (req, res, next) => {
       },
       { new: true }
     );
-    return res.json({ isValid });
+    return res.json({ isValid, correctCount: user.correctAnswers });
   } catch (err) {
     return next(err);
   }

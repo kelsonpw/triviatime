@@ -7,6 +7,7 @@ import Card from '@material-ui/core/Card';
 import Snackbar from '@material-ui/core/Snackbar';
 import { shuffle } from '../Helpers';
 import Typography from '@material-ui/core/Typography';
+import theme from '../theme';
 const styles = {
   loadingCard: {
     marginTop: '25%',
@@ -18,13 +19,18 @@ const styles = {
   container: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    textAlign: 'center',
+    flexDirection: 'column'
   },
   snackbarAlert: {
-    marginTop: '80px'
+    marginTop: '80px',
+    textAlign: 'center',
+    minWidth: '100px',
+    maxWidth: '330px'
   },
-  snackbarSpan: {
-    padding: '0 50px'
+  snackBarContainer: {
+    marginLeft: '50px'
   }
 };
 
@@ -36,7 +42,8 @@ class NewQuestion extends Component {
       valid: null,
       question: null,
       error: false,
-      openAlert: false
+      openAlert: false,
+      correctCount: null
     };
   }
 
@@ -88,11 +95,11 @@ class NewQuestion extends Component {
         original,
         userResponse
       });
-      const { isValid } = result.data;
-      this.setState({ openAlert: true, isValid });
+      const { isValid, correctCount } = result.data;
+      this.setState({ openAlert: true, isValid, correctCount });
       this.getQuestion();
       setTimeout(() => {
-        this.setState({ openAlert: false, isValid });
+        this.setState({ openAlert: false });
       }, 5000);
     } catch (err) {
       this.setState({ loading: false, error: true });
@@ -135,10 +142,14 @@ class NewQuestion extends Component {
           className={classes.snackbarAlert}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
           message={
-            <span className={classes.snackbarSpan}>
-              Your answer was{' '}
-              {this.state.isValid ? 'correct. Nice!' : 'incorrect.'}
-            </span>
+            <div className={classes.snackBarContainer}>
+              <Typography component="p" color="inherit">
+                Your answer was{' '}
+                {this.state.isValid ? 'correct. Nice!' : 'incorrect.'}
+                <br />
+                Your score is {this.state.correctCount}
+              </Typography>
+            </div>
           }
         />
       </div>
