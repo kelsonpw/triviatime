@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import QuestionCards from '../components/QuestionCard';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -27,7 +27,7 @@ const styles = {
   }
 };
 
-class NewQuestion extends Component {
+class NewQuestion extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -137,7 +137,7 @@ class NewQuestion extends Component {
           className={classes.snackbarAlert}
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
           message={
-            <div className={classes.snackBarText}>
+            <div>
               <Typography component="p" color="inherit">
                 Your answer was{' '}
                 {this.state.isValid ? 'correct. Nicely done!' : 'incorrect.'}

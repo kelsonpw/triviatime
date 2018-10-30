@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
@@ -22,7 +22,7 @@ const styles = {
   }
 };
 
-class AnswerCards extends Component {
+class AnswerCards extends PureComponent {
   renderResponses() {
     const { responses, classes } = this.props;
     return responses.map((res, index) => (

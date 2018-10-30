@@ -2,31 +2,33 @@ const express = require('express');
 const router = express.Router();
 const { User } = require('../models');
 
+// these helpers abstract the complex logic of the database queries as well as type checking
+const {
+  createResponseIfNew,
+  addToResponses
+} = require('../helpers/questionHelpers');
 router.post('/', async (req, res, next) => {
+  // IF ANSWER HAS NOT BEEN ANSWERED: generate response object, add to user model instance,
+  // and increase if answer is correct, otherwise do not handle duplicates
   try {
     const {
-      original,
-      userResponse: { username, answer }
-    } = req.body;
-    const { question, correct_answer } = original;
-    const isValid = answer === correct_answer;
-    let increaseCorrect = 0;
-    if (isValid) increaseCorrect = 1;
-    const newResponse = {
-      responseQuestion: question,
-      responseAnswer: answer,
-      correctAnswer: correct_answer,
-      responseCorrect: isValid
-    };
-    const user = await User.findOneAndUpdate(
-      { username },
-      {
-        $push: { responses: newResponse },
-        $inc: { correctAnswers: increaseCorrect }
-      },
-      { new: true }
-    );
-    return res.json({ isValid, correctCount: user.correctAnswers });
+      isNew,
+      newResponse,
+      increaseCorrectValue,
+      username
+    } = await createResponseIfNew(req.body);
+    if (isNew) {
+      const usersCorrectAnswers = await addToResponses(
+        username,
+        newResponse,
+        increaseCorrectValue
+      );
+      return res.json({
+        isValid: newResponse.responseCorrect,
+        correctCount: usersCorrectAnswers
+      });
+    }
+    return next(new Error(`Duplicate question`));
   } catch (err) {
     return next(err);
   }

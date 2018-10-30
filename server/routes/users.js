@@ -3,6 +3,7 @@ const router = express.Router();
 
 const { User } = require('../models');
 
+// if user is new create user, otherwise return the created user.  basically handles login and signup in same route
 router.post('/account', async (req, res, next) => {
   try {
     const { username } = req.body;
@@ -20,6 +21,7 @@ router.post('/account', async (req, res, next) => {
   }
 });
 
+// used to grabbing the most current user data
 router.get('/:username', async (req, res, next) => {
   try {
     const { username } = req.params;

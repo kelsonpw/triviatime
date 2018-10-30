@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+
+// creates user schema.  has an array called responses
+// that stores each instance of a question/answer for that user
 const UserSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -22,7 +25,7 @@ const UserSchema = new mongoose.Schema({
       },
       correctAnswer: {
         type: String,
-        requited: true
+        required: true
       },
       responseAnswer: {
         type: String,

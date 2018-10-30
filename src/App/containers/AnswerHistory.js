@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import AnswerCards from '../components/AnswerCards';
 import { getUserAction } from '../../authActions';
 import { connect } from 'react-redux';
@@ -27,7 +27,7 @@ const styles = {
   }
 };
 
-class AnswerHistory extends Component {
+class AnswerHistory extends PureComponent {
   async componentDidMount() {
     if (this.props.user) this.props.getUserAction(this.props.user.username);
   }

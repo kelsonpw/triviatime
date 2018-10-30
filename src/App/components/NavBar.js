@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -29,7 +29,7 @@ const styles = {
   }
 };
 
-class NavBar extends Component {
+class NavBar extends PureComponent {
   handleLogout = () => {
     localStorage.clear();
     this.props.history.go('/');

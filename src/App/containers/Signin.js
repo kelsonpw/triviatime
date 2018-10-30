@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signInAction } from '../../authActions';
@@ -38,7 +38,7 @@ const styles = theme => ({
   }
 });
 
-class Signin extends Component {
+class Signin extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {

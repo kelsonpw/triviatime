@@ -24,9 +24,12 @@ app.use('/questions', questionRoutes);
 //   res.sendFile(path.join(__dirname + '/client/build/index.html'));
 // });
 
+// error handling middleware in dev
+
 if (app.get('env') === 'development') {
   app.use((err, req, res, next) => {
     res.status(err.status || 500);
+    console.log(err.message);
     return res.json({
       error: err.message
     });
