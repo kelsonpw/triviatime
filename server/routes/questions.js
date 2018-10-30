@@ -12,6 +12,7 @@ router.post('/', async (req, res, next) => {
     const newResponse = {
       responseQuestion: question,
       responseAnswer: userResponse.answer,
+      correctAnswer: correct_answer,
       responseCorrect: isValid
     };
     const user = await User.findOneAndUpdate(

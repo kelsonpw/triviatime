@@ -20,6 +20,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
       },
+      correctAnswer: {
+        type: String,
+        requited: true
+      },
       responseAnswer: {
         type: String,
         required: true

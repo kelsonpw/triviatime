@@ -32,6 +32,9 @@ class AnswerCards extends Component {
         </Typography>
         <Typography component="p">Your answer: {res.responseAnswer}</Typography>
         <Typography component="p">
+          Correct answer: {res.correctAnswer}
+        </Typography>
+        <Typography component="p">
           Result: {res.responseCorrect ? 'Correct' : 'Incorrect'}{' '}
         </Typography>
       </Card>
